@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>E100mran App</title>
+    <style>
+        body { background: #1c1c1c; color: white; text-align: center; font-family: Arial; padding: 50px; }
+        .user-card { background: #333; border-radius: 15px; padding: 20px; margin-top: 20px; }
+        button { background: #0088cc; color: white; border: none; padding: 15px; border-radius: 10px; width: 80%; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>تطبيق E100mran</h2>
+    <div class="user-card" id="user-info">جاري تحميل بيانات المستخدم...</div>
+    <br><br>
+    <button onclick="Telegram.WebApp.close()">إغلاق التطبيق</button>
 
+    <script>
+        const webapp = window.Telegram.WebApp;
+        webapp.expand(); // فتح التطبيق بكامل الشاشة
+        const user = webapp.initDataUnsafe.user;
+        if (user) {
+            document.getElementById('user-info').innerHTML = 
+                `مرحباً ${user.first_name}<br>معرفك: ${user.id}`;
+        }
+    </script>
+</body>
+</html>
